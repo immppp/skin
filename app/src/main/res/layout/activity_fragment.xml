@@ -5,11 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.activity.FragmentActivity">
 
-    <include
-        android:id="@+id/titleView"
-        layout="@layout/title_layout" />
+    <include layout="@layout/title_layout" />
 
     <Button
         android:id="@+id/btDark"
@@ -43,4 +41,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>

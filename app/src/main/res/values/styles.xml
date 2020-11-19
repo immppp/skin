@@ -1,11 +1,17 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="ThemeOverlay.PrimaryPalette.Light" parent="AppTheme">
+        <item name="backPicture">@drawable/icon_back_black</item>
+    </style>
+
+    <style name="ThemeOverlay.PrimaryPalette.Dark" parent="AppTheme">
+        <item name="backPicture">@drawable/icon_back_white</item>
+    </style>
+
+    <!--    画面移动动画-->
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
 </resources>
