@@ -10,8 +10,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="backPicture">@drawable/icon_back_black</item>
         <item name="android:navigationBarColor">@color/color_white</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
 
 </resources>

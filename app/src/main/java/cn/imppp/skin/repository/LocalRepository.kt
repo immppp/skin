@@ -21,6 +21,6 @@ class LocalRepository {
 
     // 获取主题
     fun getCurrentTheme(): Int {
-        return SPUtils.getInstance().getInt("Theme", Theme.LIGHT.mode)
+        return SPUtils.getInstance().getInt("Theme", Theme.DARK.mode)
     }
 }

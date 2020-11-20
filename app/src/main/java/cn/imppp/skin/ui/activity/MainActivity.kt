@@ -2,6 +2,7 @@ package cn.imppp.skin.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import cn.imppp.skin.R
@@ -27,16 +28,17 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         btDark.onClick {
             LocalRepository.getInstance().saveCurrentTheme(Theme.DARK.mode)
             if (App.app.mCurrentThemes != LocalRepository.getInstance().getCurrentTheme()) {
-                recreate()
+                changeMode()
             }
         }
         btLight.onClick {
             LocalRepository.getInstance().saveCurrentTheme(Theme.LIGHT.mode)
             if (App.app.mCurrentThemes != LocalRepository.getInstance().getCurrentTheme()) {
-                recreate()
+                changeMode()
             }
         }
 
         btNextPage.onClick { startActivity(Intent(this, FragmentActivity::class.java)) }
     }
+
 }
