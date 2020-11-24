@@ -1,44 +1,75 @@
 package cn.imppp.skin.ui.activity
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModelProvider
 import cn.imppp.skin.R
-import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseActivity
-import cn.imppp.skin.repository.LocalRepository
-import cn.imppp.skin.state.ThemeViewModel
-import cn.imppp.skin.theme.Theme
+import cn.imppp.skin.state.MainViewModel
 import com.qmuiteam.qmui.kotlin.onClick
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.*
 
-class MainActivity : BaseActivity(R.layout.activity_main) {
-    private lateinit var mThemeViewModel: ThemeViewModel
+class MainActivity : BaseActivity<MainViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        //配置 primaryColor 是否全屏，在配置布局之前
-//        with(mThemeViewModel) {
-//            primaryColor.value?.let { setTheme(it) }
-//            edgeToEdgeEnabled.value?.let { applyEdgeToEdgePreference(it) }
-//        }
-        super.onCreate(savedInstanceState)
-        mThemeViewModel = ViewModelProvider(this).get(ThemeViewModel::class.java)
-        btDark.onClick {
-            LocalRepository.getInstance().saveCurrentTheme(Theme.DARK.mode)
-            if (App.app.mCurrentThemes != LocalRepository.getInstance().getCurrentTheme()) {
-                changeMode()
-            }
-        }
-        btLight.onClick {
-            LocalRepository.getInstance().saveCurrentTheme(Theme.LIGHT.mode)
-            if (App.app.mCurrentThemes != LocalRepository.getInstance().getCurrentTheme()) {
-                changeMode()
-            }
-        }
+    override fun viewModelClass(): Class<MainViewModel> = MainViewModel::class.java
 
+    override fun layoutRes(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun loadData() {
+        mViewModel.login()
         btNextPage.onClick { startActivity(Intent(this, FragmentActivity::class.java)) }
+        btLight.onClick {
+            mViewModel.login()
+        }
+    }
+
+    private fun requestData() {
+        // 内容会分配线程执行，不影响主线程内容
+        GlobalScope.launch {
+            // 请求token
+            val token = getToken()
+            val name = getName(token)
+            setData(token, name)
+        }
+        Log.i("requestData", "执行接下来的操作${Thread.currentThread().id}")
+    }
+
+    private fun setData(token: String, name: String) {
+        Log.i("requestData", "$token   $name   ${Thread.currentThread().id}")
+    }
+
+    // suspend修饰的内容按顺序执行
+    private suspend fun getName(name: String): String {
+        Log.i("requestData", "${Thread.currentThread().id}")
+        delay(2000)
+        return "name"
+    }
+
+    // suspend修饰的内容按顺序执行
+    private suspend fun getToken(): String {
+        Log.i("requestData", "${Thread.currentThread().id}")
+        delay(2000)
+        return "token"
+    }
+
+    private fun launchJob() {
+        // launch不会阻断主线程。
+        val job = GlobalScope.launch {
+            delay(3000)
+            Log.i("launchJob", "协程执行结束-- 线程id：${Thread.currentThread().id}")
+        }
+    }
+
+    private fun runBlocking() {
+        // runBlocking启动的协程任务会阻断当前线程，直到该协程执行结束。当协程执行结束之后，页面才会被显示出来。
+        runBlocking {
+            repeat(8) {
+                Log.i("runBlocking", "协程执行的线程次数$it  线程id：${Thread.currentThread().id}")
+                delay(1000)
+            }
+        }
     }
 
 }

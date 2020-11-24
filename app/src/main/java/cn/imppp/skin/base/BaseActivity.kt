@@ -1,63 +1,48 @@
 package cn.imppp.skin.base
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import cn.imppp.skin.repository.LocalRepository
-import cn.imppp.skin.theme.Theme
-import com.qmuiteam.qmui.kotlin.onClick
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper
-import kotlinx.android.synthetic.main.title_layout.*
 
+abstract class BaseActivity<VM: BaseViewModel> : AppCompatActivity() {
 
-open class BaseActivity(layoutId: Int) : AppCompatActivity(layoutId) {
+    protected open lateinit var mViewModel: VM
+
+    /**
+     * 加载的布局
+     */
+    open fun layoutRes() = 0
+
+    /**
+     * 获取ViewModel的class
+     */
+    protected abstract fun viewModelClass(): Class<VM>
+
+    /**
+     * 初始化ViewModel
+     */
+    private fun initViewModel() {
+        mViewModel = ViewModelProvider(this).get(viewModelClass())
+    }
+
+    /**
+     * 获取数据
+     */
+    open fun loadData() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        Log.i("BaseActivity", "初始化状态  ${delegate.localNightMode}")
-        Log.i("BaseActivity", "${this.localClassName} onCreate  ${delegate.localNightMode}")
-        if (delegate.localNightMode != LocalRepository.getInstance().getCurrentTheme()) {
-            delegate.localNightMode = LocalRepository.getInstance().getCurrentTheme()
-            App.app.mCurrentThemes = LocalRepository.getInstance().getCurrentTheme()
-        }
         super.onCreate(savedInstanceState)
-        ivBack.onClick {
-            Toast.makeText(this, "返回被点击", Toast.LENGTH_SHORT).show()
-            finish()
-        }
+        setContentView(layoutRes())
+        initViewModel()
+        loadData()
     }
 
     override fun onStart() {
         Log.i("BaseActivity", "${this.localClassName} onStart  ${delegate.localNightMode}")
         super.onStart()
-    }
-
-    override fun onRestart() {
-        if (delegate.localNightMode != LocalRepository.getInstance().getCurrentTheme()) {
-            delegate.localNightMode = LocalRepository.getInstance().getCurrentTheme()
-            App.app.mCurrentThemes = LocalRepository.getInstance().getCurrentTheme()
-        }
-        Log.i("BaseActivity", "${this.localClassName} onRestart  ${delegate.localNightMode}")
-        super.onRestart()
-    }
-
-    override fun onResume() {
-        if (App.app.mCurrentThemes != Theme.DARK.mode) {
-            QMUIStatusBarHelper.setStatusBarLightMode(this)
-        }
-        Log.i("BaseActivity", "${this.localClassName} onResume  ${delegate.localNightMode}")
-        super.onResume()
     }
 
     override fun onPause() {
@@ -68,6 +53,8 @@ open class BaseActivity(layoutId: Int) : AppCompatActivity(layoutId) {
     override fun onStop() {
         Log.i("BaseActivity", "${this.localClassName} onStop  ${delegate.localNightMode}")
         super.onStop()
+        // 取消正在加载的请求
+        mViewModel.cancelJob(mViewModel.jobLiveData.value)
     }
 
     override fun onDestroy() {

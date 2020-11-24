@@ -1,32 +1,21 @@
 package cn.imppp.skin.ui.activity
 
-import android.os.Bundle
 import cn.imppp.skin.R
-import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseActivity
-import cn.imppp.skin.repository.LocalRepository
-import cn.imppp.skin.theme.Theme
-import com.qmuiteam.qmui.kotlin.onClick
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.title_layout.*
+import cn.imppp.skin.state.MainViewModel
 
-class FragmentActivity : BaseActivity(R.layout.activity_fragment) {
+class FragmentActivity : BaseActivity<MainViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        tvTitle.text = "FragmentActivity"
-        btDark.onClick {
-            LocalRepository.getInstance().saveCurrentTheme(Theme.DARK.mode)
-            if (App.app.mCurrentThemes != LocalRepository.getInstance().getCurrentTheme()) {
-                changeMode()
-            }
-        }
-        btLight.onClick {
-            LocalRepository.getInstance().saveCurrentTheme(Theme.LIGHT.mode)
-            if (App.app.mCurrentThemes != LocalRepository.getInstance().getCurrentTheme()) {
-                changeMode()
-            }
-        }
+    override fun viewModelClass(): Class<MainViewModel> {
+        return MainViewModel::class.java
+    }
+
+    override fun layoutRes(): Int {
+        return R.layout.activity_fragment
+    }
+
+    override fun loadData() {
+        mViewModel.login()
     }
 
 }
