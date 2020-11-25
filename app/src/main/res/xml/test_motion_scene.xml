@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/two"
+        motion:constraintSetEnd="@id/end2"
+        motion:constraintSetStart="@id/start"
+        motion:duration="500">
+        <OnClick
+            motion:clickAction="toggle"
+            motion:targetId="@id/text2" />
+        <OnSwipe/>
+    </Transition>
+
+<!--    <Transition-->
+<!--        motion:constraintSetEnd="@id/end"-->
+<!--        motion:constraintSetStart="@id/start"-->
+<!--        motion:duration="500">-->
+
+<!--        &lt;!&ndash;        transitionToStart-->
+<!--        过渡到 元素 motion::constraintSetStart 属性指定的状态，有过度动画效果。-->
+<!--        transitionToEnd-->
+<!--        过渡到 元素motion:constraintSetEnd 属性指定的状态，有过度动画效果。-->
+<!--        jumpToStart-->
+<!--        直接跳转到 元素 motion::constraintSetStart 属性指定的状态，没有动画效果。-->
+<!--        jumpToEnd-->
+<!--        直接跳转到 元素 motion:constraintSetEnd 属性指定的状态。-->
+<!--        toggle-->
+<!--        默认值就是这个，在 元素motion:constraintSetStart和 motion:constraintSetEnd 指定的布局之间切换，如果处于start状态就过度到end状态，如果处于end状态就过度到start状态，有过度动画。&ndash;&gt;-->
+<!--        <OnClick-->
+<!--            motion:clickAction="toggle"-->
+<!--            motion:targetId="@id/text1" />-->
+
+<!--        <OnSwipe/>-->
+<!--        &lt;!&ndash;        setDebugMode(int debugMode) ——对应xml"app:motionDebug"，表示运动进行时是否显示运动路径，用来调试动画；-->
+<!--        loadLayoutDescription() ——对应xml"app:layoutDescription"，通过代码加载MotionScene；-->
+<!--        transitionToStart() ——表示切换到动画start状态；-->
+<!--        transitionToEnd() ——表示切换到动画end状态；-->
+<!--        它们都默认有过渡效果，如果不需要过渡效果，可以通过-->
+<!--        "setProgress(float pos)"处理过渡进度，取值0-1；-->
+<!--        transitionToState(int id) ——表示切换到动画某个状态，可以是start也可以是end，参数id指的是ConstraintSet标签定义的id；-->
+<!--        setTransitionListener(MotionLayout.TransitionListener listener) ——监听MotionLayout动画执行过程，接口有四个方法，onTransitionStarted、onTransitionChange、onTransitionCompleted、onTransitionTrigger。&ndash;&gt;-->
+<!--        <KeyFrameSet>-->
+<!--            &lt;!&ndash;            <KeyPosition&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:framePosition="50"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:motionTarget="@id/text4"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:pathMotionArc="flip"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentY="0.5" />&ndash;&gt;-->
+
+<!--            &lt;!&ndash;            <KeyPosition&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:framePosition="25"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:motionTarget="@id/text4"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:pathMotionArc="flip"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentX="0.25" />&ndash;&gt;-->
+
+<!--            &lt;!&ndash;            <KeyPosition&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:framePosition="75"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:motionTarget="@id/text4"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:pathMotionArc="flip"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentX="1" />&ndash;&gt;-->
+
+<!--            &lt;!&ndash;            <KeyPosition&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:framePosition="25"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:keyPositionType="parentRelative"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:motionTarget="@id/text4"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentX="0.7"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentY="0.6" />&ndash;&gt;-->
+<!--            &lt;!&ndash;            <KeyPosition&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:framePosition="50"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:keyPositionType="parentRelative"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:motionTarget="@id/text4"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentX="0.85" />&ndash;&gt;-->
+<!--            &lt;!&ndash;            <KeyPosition&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:framePosition="75"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:keyPositionType="parentRelative"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:motionTarget="@id/text4"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentX="0.7"&ndash;&gt;-->
+<!--            &lt;!&ndash;                motion:percentY="0.4" />&ndash;&gt;-->
+
+<!--            &lt;!&ndash;            apply other animation attributes&ndash;&gt;-->
+<!--            &lt;!&ndash;            前半段的动画效果：逆时针旋转一圈&ndash;&gt;-->
+<!--&lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
+<!--&lt;!&ndash;                android:rotation="-360"&ndash;&gt;-->
+<!--&lt;!&ndash;                motion:framePosition="50"&ndash;&gt;-->
+<!--&lt;!&ndash;                motion:motionTarget="@id/text4" />&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;后半段的动画效果：逆时针旋转一圈&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
+<!--&lt;!&ndash;                android:rotation="-720"&ndash;&gt;-->
+<!--&lt;!&ndash;                motion:framePosition="100"&ndash;&gt;-->
+<!--&lt;!&ndash;                motion:motionTarget="@id/text4" />&ndash;&gt;-->
+
+<!--            <KeyAttribute-->
+<!--                android:scaleX="0.5"-->
+<!--                motion:framePosition="50"-->
+<!--                motion:motionTarget="@id/text4" />-->
+
+<!--            <KeyAttribute-->
+<!--                android:scaleX="1"-->
+<!--                motion:framePosition="100"-->
+<!--                motion:motionTarget="@id/text4" />-->
+<!--        </KeyFrameSet>-->
+<!--    </Transition>-->
+
+    <ConstraintSet android:id="@+id/end2">
+
+        <Constraint android:id="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toStartOf="@id/text2"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/text3" />
+
+        <Constraint
+            android:id="@id/text3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="@id/text4"
+            motion:layout_constraintStart_toStartOf="@id/text1"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="@id/text3"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+    </ConstraintSet>
+
+    <!--    结束布局-->
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint android:id="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toStartOf="@id/text2"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="@id/text3"
+            motion:layout_constraintStart_toStartOf="@id/text1"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="@id/text2"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/text2" />
+
+    </ConstraintSet>
+
+    <!--    开始布局-->
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@id/text1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toStartOf="@id/text2"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="@id/text3"
+            motion:layout_constraintStart_toStartOf="@id/text1"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="@id/text4"
+            motion:layout_constraintStart_toStartOf="@id/text2"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+        <Constraint
+            android:id="@id/text4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="@id/text3"
+            motion:layout_constraintTop_toBottomOf="@id/layoutFirst" />
+
+    </ConstraintSet>
+
+</MotionScene>

@@ -2,13 +2,21 @@ package cn.imppp.skin.base
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import cn.imppp.skin.BR
+import cn.imppp.skin.R
 import cn.imppp.skin.repository.LocalRepository
+import kotlinx.android.synthetic.main.title_layout.*
 
-abstract class BaseActivity<VM: BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompatActivity(),
+    View.OnClickListener {
 
+    protected open lateinit var mBinding: B
     protected open lateinit var mViewModel: VM
 
     /**
@@ -33,11 +41,30 @@ abstract class BaseActivity<VM: BaseViewModel> : AppCompatActivity() {
      */
     open fun loadData() {}
 
+    /**
+     * 观察者列表
+     */
+    open fun observer() {}
+
+    /**
+     * 初始化数据
+     */
+    open fun initData() {}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutRes())
         initViewModel()
+        mBinding = DataBindingUtil.setContentView(this, layoutRes())
+        mBinding.lifecycleOwner = this
+        mBinding.setVariable(BR.click, this)
+        mBinding.setVariable(BR.vm, mViewModel)
+        initData()
         loadData()
+        observer()
+        ivBack.setOnClickListener(this)
+        if (!mViewModel.backBottom.value!!) {
+            ivBack.visibility = View.GONE
+        }
     }
 
     override fun onStart() {
@@ -70,4 +97,9 @@ abstract class BaseActivity<VM: BaseViewModel> : AppCompatActivity() {
         }
     }
 
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+            R.id.ivBack -> finish()
+        }
+    }
 }

@@ -20,11 +20,16 @@ typealias Error = suspend (Exception) -> Unit
 typealias Cancel = suspend (Exception) -> Unit
 
 open class BaseViewModel : ViewModel() {
-    val loginStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+    /**
+     * 是否显示返回按钮
+     */
+    val backBottom = MutableLiveData<Boolean>(true)
+
     /**
      * 当前请求的job
      */
     val jobLiveData = MutableLiveData<Job>()
+
     /**
      * 创建并执行协程
      * @param block 协程中执行
