@@ -1,5 +1,6 @@
 package cn.imppp.skin.ui.activity
 
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -7,6 +8,7 @@ import cn.imppp.skin.R
 import cn.imppp.skin.base.BaseActivity
 import cn.imppp.skin.databinding.ActivityFragmentBinding
 import cn.imppp.skin.state.MainViewModel
+import cn.imppp.skin.ui.activity.recycleview.RecyclerViewActivity
 import kotlinx.android.synthetic.main.activity_fragment.*
 import kotlinx.android.synthetic.main.title_layout.*
 
@@ -20,16 +22,21 @@ class FragmentActivity : BaseActivity<MainViewModel, ActivityFragmentBinding>(),
         return R.layout.activity_fragment
     }
 
-    override fun loadData() {
+    override fun initData() {
         text1.setOnClickListener(this)
         motionLayout.setTransitionListener(this)
         text2.setOnClickListener(this)
+        text3.setOnClickListener(this)
+    }
+
+    override fun loadData() {
     }
 
     override fun onClick(p0: View?) {
         super.onClick(p0)
         when(p0?.id) {
             R.id.text2 -> motionLayout.transitionToState(R.id.start)
+            R.id.text3 -> startActivity(Intent(this, RecyclerViewActivity::class.java))
         }
     }
 

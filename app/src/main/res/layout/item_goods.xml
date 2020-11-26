@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="cn.imppp.skin.adapter.binder.GoodsBinder" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/good_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:onClick="@{(view)->data.onRecycleViewClick(view, data)}"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivBackGround"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@color/btn_filled_blue_bg_disabled"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{data.index}"
+            android:textColor="@color/qmui_config_color_red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivBackGround" />
+    </LinearLayout>
+</layout>

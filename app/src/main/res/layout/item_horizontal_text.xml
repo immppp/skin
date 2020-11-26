@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="cn.imppp.skin.adapter.binder.HorizontalItemBinder" />
+
+    </data>
+
+    <TextView
+        android:layout_width="80dp"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/qmui_config_color_red"
+        android:text="@{data.index}"
+        android:background="@color/color_white"/>
+
+</layout>

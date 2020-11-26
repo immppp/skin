@@ -67,4 +67,5 @@ dependencies {
     implementation rootProject.ext.dependencies["liveData"]
 
     implementation project(':netmodlelibrary')
+    implementation project(':multitype-adapter-library')    // 多样式条目加载
 }
