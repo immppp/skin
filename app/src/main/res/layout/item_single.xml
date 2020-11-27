@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="cn.imppp.skin.adapter.single.SingleBinder" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ivSingleBackGround"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="@{(view)->data.onRecycleViewClick(view, data)}">
+
+        <TextView
+            android:id="@+id/tvSingleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{(view)->data.onRecycleViewClick(view, data)}"
+            android:padding="10dp"
+            android:text="@{data.data.name}"
+            android:textColor="@color/color_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSingleAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{(view)->data.onRecycleViewClick(view, data)}"
+            android:padding="10dp"
+            android:text="@{data.data.age}"
+            android:textColor="@color/color_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSingleName" />
+
+        <TextView
+            android:id="@+id/tvSingleDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{(view)->data.onRecycleViewClick(view, data)}"
+            android:padding="10dp"
+            android:text="@{data.data.description}"
+            android:textColor="@color/color_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSingleAge" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

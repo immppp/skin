@@ -33,4 +33,10 @@ class GoodsBinder(val index: String) : MultiTypeBinder<ItemGoodsBinding>() {
         return other is GoodsBinder && other.index == index
     }
 
+    override fun onBindViewHolder(binding: ItemGoodsBinding) {
+        if(index.toInt()%2 == 0) {
+            binding.ivBackGround.background = binding.root.context.getDrawable(R.color.qmui_config_color_blue)
+        }
+    }
+
 }

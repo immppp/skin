@@ -8,6 +8,7 @@ import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseActivity
 import cn.imppp.skin.databinding.ActivityMainBinding
 import cn.imppp.skin.state.MainViewModel
+import cn.imppp.skin.ui.activity.single.SingleRecyclerViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         btNextPage.setOnClickListener(this)
         btLight.setOnClickListener(this)
         btDark.setOnClickListener(this)
+        btSingleRecyclerView.setOnClickListener(this)
         mViewModel.backBottom.value = false
     }
 
@@ -44,6 +46,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             }
             R.id.btLight -> {
                 mViewModel.login()
+            }
+            R.id.btSingleRecyclerView -> {
+                startActivity(Intent(App.mWindowsContext, SingleRecyclerViewActivity::class.java))
             }
         }
     }
