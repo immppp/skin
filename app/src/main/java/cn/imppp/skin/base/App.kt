@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import cn.imppp.netmodlelibrary.utils.Utils
 import cn.imppp.skin.theme.Theme
+import cn.imppp.skin.utils.MmkvUtils
+import com.tencent.mmkv.MMKV
 
 class App :Application() {
 
@@ -20,6 +22,9 @@ class App :Application() {
         mWindowsContext = applicationContext
         super.onCreate()
         Utils.init(mWindowsContext)
+        // 初始化mmkv存储
+        MMKV.initialize(this)
+        MmkvUtils.instance
     }
 
 }

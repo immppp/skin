@@ -1,16 +1,17 @@
 package cn.imppp.skin.base
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import cn.imppp.skin.BR
 import cn.imppp.skin.R
 import cn.imppp.skin.repository.LocalRepository
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import kotlinx.android.synthetic.main.title_layout.*
 
 abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompatActivity(),
@@ -53,6 +54,9 @@ abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // 隐藏状态栏
+//        QMUIStatusBarHelper.translucent(this, Color.TRANSPARENT)
+//        QMUIStatusBarHelper.setStatusBarLightMode(this)
         initViewModel()
         mBinding = DataBindingUtil.setContentView(this, layoutRes())
         mBinding.lifecycleOwner = this
@@ -61,9 +65,12 @@ abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompat
         initData()
         loadData()
         observer()
-        ivBack.setOnClickListener(this)
-        if (!mViewModel.backBottom.value!!) {
-            ivBack.visibility = View.GONE
+        if(mViewModel.haveTitleLayout.value!!) {
+            ivBack.setOnClickListener(this)
+        } else {
+            if (!mViewModel.backBottom.value!!) {
+                ivBack.visibility = View.GONE
+            }
         }
     }
 

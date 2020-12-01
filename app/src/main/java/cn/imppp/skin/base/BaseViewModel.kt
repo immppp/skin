@@ -26,6 +26,11 @@ open class BaseViewModel : ViewModel() {
     val backBottom = MutableLiveData<Boolean>(true)
 
     /**
+     * 是否含有标题栏
+     */
+    val haveTitleLayout = MutableLiveData<Boolean>(true)
+
+    /**
      * 当前请求的job
      */
     val jobLiveData = MutableLiveData<Job>()

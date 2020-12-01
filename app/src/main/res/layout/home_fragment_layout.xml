@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="cn.imppp.skin.ui.fragment.main.HomeViewModel" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btHomeSimpleRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@color/qmui_s_transparent"
+            android:fitsSystemWindows="true"
+            android:text="simple recycler view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btHomeMultiRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/qmui_s_transparent"
+            android:text="multi recycler view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btHomeSimpleRecyclerView" />
+
+        <Button
+            android:id="@+id/btHomeMotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/qmui_s_transparent"
+            android:text="motion layout view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btHomeMultiRecyclerView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

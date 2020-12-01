@@ -1,10 +1,15 @@
 package cn.imppp.skin.state
 
 import android.util.Log
+import androidx.datastore.preferences.Preferences
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseViewModel
 import cn.imppp.skin.entity.UserEntity
+import cn.imppp.skin.repository.ProtoDataStoreRepository
 import cn.imppp.skin.repository.NetRepository
+import kotlinx.coroutines.launch
 
 class MainViewModel : BaseViewModel() {
 

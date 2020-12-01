@@ -52,5 +52,10 @@ ext  {
             "rxlifecycle-android"                  : "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.2",
             "rxlifecycle"                          : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
             "rxlifecycle-components"               : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+
+            "mmkv"                  : "com.tencent:mmkv-static:1.2.6",
+            "datastore-preferences" : "androidx.datastore:datastore-preferences:1.0.0-alpha01",
+            "proto-datastore"       : "androidx.datastore:datastore-core:1.0.0-alpha01",
+            "protobuf"              : "com.google.protobuf:protobuf-javalite:3.10.0",
     ]
 }
