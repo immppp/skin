@@ -1,5 +1,6 @@
 package cn.imppp.netmodlelibrary.http.cookie
 
+import android.util.Log
 import cn.imppp.netmodlelibrary.http.cookie.store.CookieStore
 import okhttp3.Cookie
 import okhttp3.CookieJar
@@ -13,6 +14,7 @@ class CookieJarImpl(cookieStore: CookieStore?) : CookieJar {
         url: HttpUrl,
         cookies: List<Cookie>
     ) {
+        Log.i("CookieJar", "save cookie $url   \n  $cookies")
         cookieStore.saveCookie(url, cookies)
     }
 

@@ -4,7 +4,10 @@ import android.util.Log
 import android.view.View
 import cn.imppp.skin.R
 import cn.imppp.skin.base.BaseFragment
+import cn.imppp.skin.constant.Constant
 import cn.imppp.skin.databinding.MineFragmentLayoutBinding
+import cn.imppp.skin.utils.MmkvUtils
+import kotlinx.android.synthetic.main.mine_fragment_layout.*
 
 class MineFragment : BaseFragment<MineViewModel, MineFragmentLayoutBinding>() {
     override fun viewModelClass(): Class<MineViewModel> {
@@ -16,15 +19,15 @@ class MineFragment : BaseFragment<MineViewModel, MineFragmentLayoutBinding>() {
     }
 
     override fun onClick(p0: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when(p0?.id) {
+        }
     }
 
     override fun initView() {
-        Log.i("road log", "初始化布局方法  mineFragment")
     }
 
     override fun initData() {
-        Log.i("road log", "初始化数据方法    mineFragment")
+        tvMineUser.text = MmkvUtils.decodeString(Constant.spUserName)
     }
 
     override fun observe() {

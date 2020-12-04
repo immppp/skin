@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="cn.imppp.skin.ui.activity.login.LoginViewModel" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/mlLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/login_motion_layout">
+
+        <ImageView
+            android:id="@+id/ivLoginPic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/icon_login" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLoginUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginPic">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <ImageView
+                    android:id="@+id/ivUserPic"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_user_light"
+                    app:layout_constraintBottom_toBottomOf="@id/etLoginUser"
+                    app:layout_constraintEnd_toStartOf="@id/etLoginUser"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etLoginUser" />
+
+                <EditText
+                    android:id="@+id/etLoginUser"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@null"
+                    android:hint="请输入用户名"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ivUserPic"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivPasswordPic"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_password_light"
+                    app:layout_constraintBottom_toBottomOf="@id/etLoginPassword"
+                    app:layout_constraintEnd_toStartOf="@id/etLoginPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etLoginPassword" />
+
+                <EditText
+                    android:id="@+id/etLoginPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ivPasswordPic"
+                    app:layout_constraintTop_toBottomOf="@id/etLoginUser" />
+
+                <Button
+                    android:id="@+id/btLoginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_login_selector"
+                    android:enabled="false"
+                    android:text="Login"
+                    android:textColor="@color/color_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etLoginPassword" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLoginRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginPic">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <ImageView
+                    android:id="@+id/ivRegisterUserPic"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_user_light"
+                    app:layout_constraintBottom_toBottomOf="@id/etRegisterUser"
+                    app:layout_constraintEnd_toStartOf="@id/etRegisterUser"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etRegisterUser" />
+
+                <EditText
+                    android:id="@+id/etRegisterUser"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@null"
+                    android:hint="请输入用户名"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ivRegisterUserPic"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivRegisterPasswordPic"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_password_light"
+                    app:layout_constraintBottom_toBottomOf="@id/etRegisterPassword"
+                    app:layout_constraintEnd_toStartOf="@id/etRegisterPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etRegisterPassword" />
+
+                <EditText
+                    android:id="@+id/etRegisterPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ivRegisterPasswordPic"
+                    app:layout_constraintTop_toBottomOf="@id/etRegisterUser" />
+
+                <ImageView
+                    android:id="@+id/ivRegisterAgainPasswordPic"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_password_light"
+                    app:layout_constraintBottom_toBottomOf="@id/etRegisterAgainPassword"
+                    app:layout_constraintEnd_toStartOf="@id/etRegisterAgainPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etRegisterAgainPassword" />
+
+                <EditText
+                    android:id="@+id/etRegisterAgainPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"
+                    android:hint="请再次输入密码"
+                    android:inputType="textPassword"
+                    android:textColor="?attr/textColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ivRegisterAgainPasswordPic"
+                    app:layout_constraintTop_toBottomOf="@id/etRegisterPassword" />
+
+                <Button
+                    android:id="@+id/btRegisterButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_login_selector"
+                    android:enabled="false"
+                    android:text="Register"
+                    android:textColor="@color/color_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etRegisterAgainPassword" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btLogin"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button_circle_bg_selector"
+            android:text="注册"
+            android:textColor="@color/color_white" />
+
+        <Button
+            android:id="@+id/btRegister"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button_circle_bg_selector"
+            android:text="登陆"
+            android:textColor="@color/color_white" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

@@ -57,5 +57,6 @@ ext  {
             "datastore-preferences" : "androidx.datastore:datastore-preferences:1.0.0-alpha01",
             "proto-datastore"       : "androidx.datastore:datastore-core:1.0.0-alpha01",
             "protobuf"              : "com.google.protobuf:protobuf-javalite:3.10.0",
+
     ]
 }

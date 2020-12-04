@@ -4,11 +4,13 @@
     <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
         <item name="colorPrimary">@color/qmui_s_transparent</item>
         <item name="colorPrimaryDark">@color/qmui_s_transparent</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/grey</item>
         <item name="backPicture">@drawable/icon_back_white</item>
 <!--        设置底部的状态栏颜色-->
         <item name="android:navigationBarColor">@color/color_black</item>
 <!--        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>-->
+        <item name="textColor">@color/color_white</item>
+        <item name="textSecondColor">@color/grey</item>
     </style>
 
 </resources>

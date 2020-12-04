@@ -34,13 +34,14 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment(
         mBinding.setVariable(BR.vm, mViewModel)
         observe()
         initView()
-        initData()
     }
 
     override fun onResume() {
         super.onResume()
         if (lazyLoad) {
             lazyLoadData()
+        } else {
+            initData()
         }
         lazyLoad = true
     }

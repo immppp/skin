@@ -2,5 +2,8 @@
 <resources>
 
     <dimen name="sp_16">16sp</dimen>
+    <dimen name="primary_size">14sp</dimen>
+    <dimen name="small_size">12sp</dimen>
+    <dimen name="big_size">16sp</dimen>
 
 </resources>

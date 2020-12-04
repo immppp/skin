@@ -28,7 +28,7 @@ object RetrofitClient {
     /**
      * cookie
      */
-    private val cookieJar = CookieJarImpl(PersistentCookieStore(App.mWindowsContext))
+    val cookieJar = CookieJarImpl(PersistentCookieStore(App.mWindowsContext))
 
     /**
      * sslParams

@@ -1,12 +1,13 @@
 package cn.imppp.netmodlelibrary.http.cookie.store
 
+import android.util.Log
 import okhttp3.Cookie
 import java.io.IOException
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.io.Serializable
 
-class SerializableHttpCookie(cookie: Cookie) : Serializable {
+class SerializableHttpCookie : Serializable {
     private val serialVersionUID = 6374381323722046732L
 
     @Transient
@@ -14,7 +15,10 @@ class SerializableHttpCookie(cookie: Cookie) : Serializable {
     @Transient
     private var clientCookie: Cookie? = null
 
-    fun SerializableHttpCookie(cookie: Cookie?) {
+    //    fun SerializableHttpCookie(cookie: Cookie?) {
+//        this.cookie = cookie
+//    }
+    constructor(cookie: Cookie) {
         this.cookie = cookie
     }
 
@@ -41,6 +45,7 @@ class SerializableHttpCookie(cookie: Cookie) : Serializable {
 
     @Throws(IOException::class, ClassNotFoundException::class)
     private fun readObject(`in`: ObjectInputStream) {
+        Log.i("data", "${`in`.readObject()}    success")
         val name = `in`.readObject() as String
         val value = `in`.readObject() as String
         val expiresAt = `in`.readLong()

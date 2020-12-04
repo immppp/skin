@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?><!--登陆界面的动画效果-->
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/tools">
+
+    <Transition
+        android:id="@+id/layout"
+        app:constraintSetEnd="@id/endLogin"
+        app:constraintSetStart="@id/startLogin"
+        motion:duration="1000">
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/btLogin" />
+
+    </Transition>
+
+    <Transition
+        android:id="@+id/reBack"
+        app:constraintSetEnd="@id/startLogin"
+        app:constraintSetStart="@id/endLogin"
+        motion:duration="1000">
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/btRegister" />
+
+    </Transition>
+
+    <!--    开始布局-->
+    <ConstraintSet android:id="@+id/startLogin">
+
+        <Constraint
+            android:id="@id/ivLoginPic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--       登陆 cardView-->
+        <Constraint
+            android:id="@id/cvLoginUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginPic" />
+
+        <!--        注册 cardView-->
+        <Constraint
+            android:id="@id/cvLoginRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginPic" />
+
+        <Constraint
+            android:id="@id/btRegister"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/btLogin"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </ConstraintSet>
+
+    <!--    结束布局-->
+    <ConstraintSet android:id="@+id/endLogin">
+
+        <Constraint
+            android:id="@id/ivLoginPic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--       登陆 cardView-->
+        <Constraint
+            android:id="@id/cvLoginUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginPic" />
+
+        <!--        注册 cardView-->
+        <Constraint
+            android:id="@id/cvLoginRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginPic" />
+
+        <Constraint
+            android:id="@id/btRegister"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/btLogin"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </ConstraintSet>
+
+</MotionScene>

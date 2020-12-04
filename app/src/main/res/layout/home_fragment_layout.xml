@@ -16,37 +16,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btHomeSimpleRecyclerView"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tlHome"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:background="@color/qmui_s_transparent"
-            android:fitsSystemWindows="true"
-            android:text="simple recycler view"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btHomeMultiRecyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/qmui_s_transparent"
-            android:text="multi recycler view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btHomeSimpleRecyclerView" />
-
-        <Button
-            android:id="@+id/btHomeMotion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/qmui_s_transparent"
-            android:text="motion layout view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btHomeMultiRecyclerView" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpHomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tlHome" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
