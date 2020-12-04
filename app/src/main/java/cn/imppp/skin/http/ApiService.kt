@@ -7,11 +7,11 @@ interface ApiService {
     @FormUrlEncoded
     @POST("user/login")
 //    @Headers("Content-Type:application/json;charset=UTF-8")
-    suspend fun login(@FieldMap value : Map<String, String>): BaseResponse<UserEntity>
+    suspend fun login(@FieldMap value: Map<String, String>): BaseResponse<UserEntity>
 
     @FormUrlEncoded
     @POST("user/register")
-    suspend fun register(@FieldMap value : Map<String, String>): BaseResponse<RegisterEntity>
+    suspend fun register(@FieldMap value: Map<String, String>): BaseResponse<RegisterEntity>
 
     @GET("article/list/{page}/json")
     suspend fun articleList(@Path("page") page: Int): BaseResponse<BaseListResponse<List<ArticleEntity>>>
@@ -24,4 +24,10 @@ interface ApiService {
 
     @GET("wxarticle/chapters/json")
     suspend fun accountList(): BaseResponse<List<OfficialAccountEntity>>
+
+    @GET("tree/json")
+    suspend fun systemList(): BaseResponse<List<BaseSystemEntity>>
+
+    @GET("project/tree/json")
+    suspend fun projectNameList(): BaseResponse<List<ProjectTypeEntity>>
 }

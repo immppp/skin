@@ -73,4 +73,18 @@ class NetRepository {
     suspend fun officialAccountList(): List<OfficialAccountEntity> {
         return RetrofitClient.apiService.accountList().data()
     }
+
+    /**
+     * 获取体系列表
+     */
+    suspend fun systemList(): List<BaseSystemEntity> {
+        return RetrofitClient.apiService.systemList().data()
+    }
+
+    /**
+     * 获取项目分类列表
+     */
+    suspend fun projectTypeList(): List<ProjectTypeEntity> {
+        return RetrofitClient.apiService.projectNameList().data()
+    }
 }
