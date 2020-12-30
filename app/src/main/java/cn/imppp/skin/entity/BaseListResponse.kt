@@ -1,7 +1,5 @@
 package cn.imppp.skin.entity
 
-import android.text.TextUtils
-import android.util.Log
 import androidx.annotation.Keep
 import cn.imppp.skin.http.ApiException
 
@@ -12,6 +10,7 @@ data class BaseListResponse<T>(
     val over: Boolean,
     val pageCount: Int,
     val size: Int,
+    val total : Int,
     private val datas: T?
 ) {
     fun datas(): T {

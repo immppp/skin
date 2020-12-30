@@ -1,5 +1,7 @@
 package cn.imppp.skin.ui.fragment.home
 
+import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
@@ -15,7 +17,10 @@ import cn.imppp.skin.adapter.mainArticle.MainProjectBinder
 import cn.imppp.skin.adapter.mainArticle.MainSquareBinder
 import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseFragment
+import cn.imppp.skin.constant.Constant
 import cn.imppp.skin.databinding.FragmentProjectLayoutBinding
+import cn.imppp.skin.entity.ProjectTypeEntity
+import cn.imppp.skin.ui.activity.project.ProjectActivity
 import cn.imppp.skin.ui.fragment.main.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_project_layout.*
 import kotlinx.android.synthetic.main.fragment_systems_layout.*
@@ -66,5 +71,13 @@ class ProjectFragment : BaseFragment<HomeViewModel, FragmentProjectLayoutBinding
     }
 
     override fun onRecycleViewClick(view: View, any: Any?) {
+        when (view.id) {
+            R.id.cvItemProject -> {
+                any as ProjectTypeEntity
+                val intent = Intent(App.mWindowsContext, ProjectActivity::class.java)
+                intent.putExtra(Constant.cId, any.id)
+                startActivity(intent)
+            }
+        }
     }
 }

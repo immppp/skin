@@ -3,7 +3,7 @@ package cn.imppp.skin.ui.fragment.official
 import androidx.lifecycle.MutableLiveData
 import cn.imppp.skin.base.BaseViewModel
 import cn.imppp.skin.entity.OfficialAccountEntity
-import cn.imppp.skin.repository.NetRepository
+import cn.imppp.skin.repository.net.NetRepository
 
 /**
  * 公众号fragment

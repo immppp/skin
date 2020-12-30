@@ -6,7 +6,7 @@ import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseViewModel
 import cn.imppp.skin.entity.RegisterEntity
 import cn.imppp.skin.entity.UserEntity
-import cn.imppp.skin.repository.NetRepository
+import cn.imppp.skin.repository.net.NetRepository
 
 class LoginViewModel : BaseViewModel() {
 

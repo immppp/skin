@@ -1,4 +1,4 @@
-package cn.imppp.skin.repository
+package cn.imppp.skin.repository.local
 
 import cn.imppp.skin.theme.Theme
 import cn.imppp.skin.utils.SPUtils
@@ -10,8 +10,10 @@ import cn.imppp.skin.utils.SPUtils
 class LocalRepository {
 
     companion object {
-        private val localRepository: LocalRepository = LocalRepository()
-        fun getInstance(): LocalRepository = localRepository
+        private val localRepository: LocalRepository =
+            LocalRepository()
+        fun getInstance(): LocalRepository =
+            localRepository
     }
 
     // 缓存当前的主题（黑色/白色主题）

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import cn.imppp.skin.base.BaseViewModel
 import cn.imppp.skin.entity.ArticleEntity
-import cn.imppp.skin.repository.NetRepository
+import cn.imppp.skin.repository.net.NetRepository
 
 class MainViewModel : BaseViewModel() {
 

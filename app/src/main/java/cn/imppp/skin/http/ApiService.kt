@@ -30,4 +30,7 @@ interface ApiService {
 
     @GET("project/tree/json")
     suspend fun projectNameList(): BaseResponse<List<ProjectTypeEntity>>
+
+    @GET("project/list/{page}/json")
+    suspend fun projectList(@Path("page") page: Int, @Query("cid") cid : Int) : BaseResponse<BaseListResponse<List<ProjectEntity>>>
 }

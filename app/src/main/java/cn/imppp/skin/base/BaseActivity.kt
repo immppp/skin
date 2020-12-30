@@ -1,6 +1,5 @@
 package cn.imppp.skin.base
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,8 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import cn.imppp.skin.BR
 import cn.imppp.skin.R
-import cn.imppp.skin.repository.LocalRepository
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import cn.imppp.skin.repository.local.LocalRepository
 import kotlinx.android.synthetic.main.title_layout.*
 
 abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompatActivity(),
@@ -63,8 +61,8 @@ abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompat
         mBinding.setVariable(BR.click, this)
         mBinding.setVariable(BR.vm, mViewModel)
         initData()
-        loadData()
         observer()
+        loadData()
         if(mViewModel.haveTitleLayout.value!!) {
             ivBack.setOnClickListener(this)
         } else {
@@ -109,4 +107,5 @@ abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompat
             R.id.ivBack -> finish()
         }
     }
+
 }

@@ -2,6 +2,7 @@ package cn.imppp.skin.adapter.mainArticle
 
 import android.annotation.SuppressLint
 import android.text.TextUtils
+import android.util.Log
 import cn.imppp.multitype_adapter_library.binder.MultiTypeBinder
 import cn.imppp.skin.R
 import cn.imppp.skin.databinding.ItemArticleLayoutBinding
@@ -13,11 +14,12 @@ class MainArticleBinder(val data: ArticleEntity) : MultiTypeBinder<ItemArticleLa
     }
 
     override fun areContentsTheSame(other: Any): Boolean {
-        return other is ArticleEntity && other == data
+        return other is MainArticleBinder && other.data == data
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(binding: ItemArticleLayoutBinding) {
+        Log.i("mainArticleBinder", data.title)
         if (!TextUtils.isEmpty(data.author)) {
             binding.tvArticleAuthor.text = "作者：${data.author}"
         } else if (!TextUtils.isEmpty(data.shareUser)) {

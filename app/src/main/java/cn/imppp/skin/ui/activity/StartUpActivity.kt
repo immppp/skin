@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import cn.imppp.skin.R
 import cn.imppp.skin.base.App
 import cn.imppp.skin.constant.Constant
+import cn.imppp.skin.ui.activity.demo.CardViewActivity
 import cn.imppp.skin.ui.activity.login.LoginActivity
 import cn.imppp.skin.utils.MmkvUtils
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
@@ -21,9 +22,9 @@ class StartUpActivity: AppCompatActivity() {
         QMUIDisplayHelper.setFullScreen(this)
         setContentView(R.layout.activity_start_up)
         if (!TextUtils.isEmpty(MmkvUtils.decodeString(Constant.spCookie))) {
-            startActivity(Intent(App.mWindowsContext, MainActivity::class.java))
+            startActivity(Intent(App.mWindowsContext, CardViewActivity::class.java))
         } else {
-            startActivity(Intent(App.mWindowsContext, LoginActivity::class.java))
+            startActivity(Intent(App.mWindowsContext, CardViewActivity::class.java))
         }
         finish()
     }

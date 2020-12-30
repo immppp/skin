@@ -57,6 +57,14 @@ ext  {
             "datastore-preferences" : "androidx.datastore:datastore-preferences:1.0.0-alpha01",
             "proto-datastore"       : "androidx.datastore:datastore-core:1.0.0-alpha01",
             "protobuf"              : "com.google.protobuf:protobuf-javalite:3.10.0",
+            'glide'                 : "com.github.bumptech.glide:glide:4.9.0",
+            "smart_refresh"         :"com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-11",
+            "smart_refresh_head"    :"com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-11",
+            "smart_support"         :"androidx.legacy:legacy-support-v4:1.0.0",
 
+            // 数据库内容
+            "room"                  : "androidx.room:room-runtime:2.2.5",
+            "room_annotation"       : "androidx.room:room-compiler:2.2.5",
+            "room_kotlin"           : "androidx.room:room-compiler:2.2.5",
     ]
 }

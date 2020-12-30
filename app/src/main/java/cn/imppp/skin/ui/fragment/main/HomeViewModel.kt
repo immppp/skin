@@ -7,7 +7,7 @@ import cn.imppp.skin.entity.ArticleEntity
 import cn.imppp.skin.entity.BaseSystemEntity
 import cn.imppp.skin.entity.ProjectTypeEntity
 import cn.imppp.skin.entity.SquareEntity
-import cn.imppp.skin.repository.NetRepository
+import cn.imppp.skin.repository.net.NetRepository
 
 class HomeViewModel : BaseViewModel() {
     val articleList = MutableLiveData<List<ArticleEntity>>()
@@ -18,13 +18,27 @@ class HomeViewModel : BaseViewModel() {
     fun loadArticleList(page: Int) {
         jobLiveData.value = launch(
             block = {
-                articleList.value = NetRepository.getInstance().articleList(page)
+                if (page == 0) {
+                    articleList.value = NetRepository.getInstance().articleList(page)
+                } else {
+                    val tempData = NetRepository.getInstance().articleList(page)
+                    val lastData: ArrayList<ArticleEntity>? =
+                        articleList.value as ArrayList<ArticleEntity>?
+                    for (i in lastData!!.indices) {
+                        Log.i("homeViewModel", lastData[i].title)
+                    }
+                    lastData!!.addAll(tempData)
+                    Log.i("homeViewModel", "=========")
+                    for (i in lastData!!.indices) {
+                        Log.i("homeViewModel", lastData[i].title)
+                    }
+                    articleList.value = lastData
+                }
+
             },
             error = {
             },
             cancel = {
-                Log.i("ThreadTag", "cancel mainViewModel${Thread.currentThread().id}")
-                Log.i("requestData", "cancel 返回的数据结果为：${it.message}")
             }
         )
     }

@@ -1,5 +1,6 @@
 package cn.imppp.skin.ui.fragment.question
 
+import android.content.Intent
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
@@ -14,7 +15,11 @@ import cn.imppp.skin.adapter.mainArticle.MainQuestionBinder
 import cn.imppp.skin.adapter.mainArticle.MainSquareBinder
 import cn.imppp.skin.base.App
 import cn.imppp.skin.base.BaseFragment
+import cn.imppp.skin.constant.Constant
 import cn.imppp.skin.databinding.FragmentQuestionLayoutBinding
+import cn.imppp.skin.entity.ArticleEntity
+import cn.imppp.skin.entity.QuestionEntity
+import cn.imppp.skin.ui.activity.web.WebViewActivity
 import kotlinx.android.synthetic.main.fragment_question_layout.*
 import kotlinx.android.synthetic.main.square_fragment_layout.*
 
@@ -38,7 +43,6 @@ class QuestionFragment : BaseFragment<QuestionViewModel, FragmentQuestionLayoutB
         mViewModel.questionList.observe(this, Observer {
             // 加载数据
             mMultiTypeAdapter.notifyAdapterChanged(mutableListOf<MultiTypeBinder<*>>().apply {
-
                 for (i in it.indices) {
                     add(MainQuestionBinder(it[i]).apply {
                         setOnClickListener(this@QuestionFragment::onRecycleViewClick)
@@ -65,6 +69,14 @@ class QuestionFragment : BaseFragment<QuestionViewModel, FragmentQuestionLayoutB
         mViewModel.loadQuestionList(0)
     }
 
-    override fun onRecycleViewClick(view: View) {
+    override fun onRecycleViewClick(view: View, any: Any?) {
+        when(view.id) {
+            R.id.cvQuestionLayout -> {
+                any as QuestionEntity
+                val intent = Intent(App.mWindowsContext, WebViewActivity::class.java)
+                intent.putExtra(Constant.url, any.link)
+                startActivity(intent)
+            }
+        }
     }
 }

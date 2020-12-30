@@ -1,5 +1,6 @@
 package cn.imppp.multitype_adapter_library
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -14,10 +15,16 @@ import java.lang.NullPointerException
  * 扩展layoutManage
  */
 
-class MultiTypeAdapter constructor(val layoutManager: RecyclerView.LayoutManager): RecyclerView.Adapter<MultiTypeViewHolder>() {
+class MultiTypeAdapter constructor(val layoutManager: RecyclerView.LayoutManager) :
+    RecyclerView.Adapter<MultiTypeViewHolder>() {
 
     // 使用后台线程通过差异性计算来更新列表
-    private val mAsyncListChange by lazy { AsyncListDiffer(this, DiffItemCallback<MultiTypeBinder<*>>()) }
+    private val mAsyncListChange by lazy {
+        AsyncListDiffer(
+            this,
+            DiffItemCallback<MultiTypeBinder<*>>()
+        )
+    }
 
     // 存储MultiTypeBinder和holder
     private var mHashCodeViewType = LinkedHashMap<Int, MultiTypeBinder<*>>()
@@ -32,7 +39,10 @@ class MultiTypeAdapter constructor(val layoutManager: RecyclerView.LayoutManager
         binders.forEach {
             mHashCodeViewType[it.hashCode()] = it
         }
-        mAsyncListChange.submitList(mHashCodeViewType.map { it.value })
+        mAsyncListChange.submitList(mHashCodeViewType.map {
+            Log.i("multiTypeAdapter", "${it.value}")
+            it.value
+        })
     }
 
     // 刷新单个数据
@@ -69,7 +79,8 @@ class MultiTypeAdapter constructor(val layoutManager: RecyclerView.LayoutManager
 
     @Suppress("UNCHECKED_CAST")
     override fun onBindViewHolder(holder: MultiTypeViewHolder, position: Int) {
-        val mCurrentBinder = mAsyncListChange.currentList[position] as MultiTypeBinder<ViewDataBinding>
+        val mCurrentBinder =
+            mAsyncListChange.currentList[position] as MultiTypeBinder<ViewDataBinding>
         holder.itemView.tag = mCurrentBinder.layoutId()
         holder.onBindViewHolder(mCurrentBinder)
     }

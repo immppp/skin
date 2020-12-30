@@ -20,11 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.login.LoginActivity"/>
+        <activity android:name=".ui.activity.login.LoginActivity" />
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.FragmentActivity" />
         <activity android:name=".ui.activity.recycleview.RecyclerViewActivity" />
         <activity android:name=".ui.activity.single.SingleRecyclerViewActivity" />
+        <activity android:name=".ui.activity.project.ProjectActivity" />
+        <activity android:name=".ui.activity.web.WebViewActivity" />
+        <activity android:name=".ui.activity.demo.CardViewActivity"/>
     </application>
 
 </manifest>

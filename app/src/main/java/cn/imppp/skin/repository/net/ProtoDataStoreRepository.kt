@@ -1,4 +1,4 @@
-package cn.imppp.skin.repository
+package cn.imppp.skin.repository.net
 
 import android.content.Context
 import androidx.datastore.CorruptionException

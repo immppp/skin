@@ -11,6 +11,8 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvItemProject"
+        android:onClick="@{(view)->data.onRecycleViewClick(view, data.data)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

@@ -1,11 +1,7 @@
-package cn.imppp.skin.repository
+package cn.imppp.skin.repository.net
 
-import android.util.Log
 import cn.imppp.skin.entity.*
 import cn.imppp.skin.http.RetrofitClient
-import com.google.gson.Gson
-import okhttp3.MediaType
-import okhttp3.RequestBody
 
 class NetRepository {
     // 创建该对象的单例
@@ -86,5 +82,12 @@ class NetRepository {
      */
     suspend fun projectTypeList(): List<ProjectTypeEntity> {
         return RetrofitClient.apiService.projectNameList().data()
+    }
+
+    /**
+     * 获取类型项目列表
+     */
+    suspend fun projectList(page: Int, cid: Int): List<ProjectEntity> {
+        return RetrofitClient.apiService.projectList(page, cid).data().datas()
     }
 }

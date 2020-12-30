@@ -123,4 +123,14 @@ dependencies {
     implementation rootProject.ext.dependencies["datastore-preferences"]
     implementation rootProject.ext.dependencies["proto-datastore"]
     implementation rootProject.ext.dependencies["protobuf"]
+    // 图片加载
+    implementation rootProject.ext.dependencies["glide"]
+    // 下拉刷新
+    implementation rootProject.ext.dependencies["smart_refresh"]
+    implementation rootProject.ext.dependencies["smart_refresh_head"]
+    implementation rootProject.ext.dependencies["smart_support"]
+    // 数据库存储方式
+    implementation rootProject.ext.dependencies["room"]
+    annotationProcessor rootProject.ext.dependencies["room_annotation"]
+    kapt rootProject.ext.dependencies["room_kotlin"]
 }

@@ -9,6 +9,7 @@
 <!--        设置底部的状态栏颜色-->
         <item name="android:navigationBarColor">@color/color_black</item>
 <!--        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>-->
+
         <item name="textColor">@color/color_white</item>
         <item name="textSecondColor">@color/grey</item>
     </style>
