@@ -32,8 +32,6 @@ public class CustomCardView extends CardView {
         super(context, attrs, defStyleAttr);
     }
 
-
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {

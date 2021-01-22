@@ -1,9 +1,7 @@
 package cn.imppp.skin.base
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import cn.imppp.skin.utils.DateUtils
+import androidx.room.*
+import cn.imppp.skin.utils.convert.DateConverter
 import java.io.Serializable
 
 /**
@@ -11,16 +9,24 @@ import java.io.Serializable
  */
 
 @Entity
+@TypeConverters(DateConverter::class)
 open class BaseDaoEntity : Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    var seqNum: Long = 0                                                    // 主键
+    @ColumnInfo(name = "seqNum")
+    var seqNum: Long = 0                                                   // 主键
 
     @ColumnInfo(name = "createTimes")
-    var createTimes: String = DateUtils.getCurrentDataDefault()             // 创建时间
+    var createTimes: Long = System.currentTimeMillis()                     // 创建时间
 
     @ColumnInfo(name = "updateTimes")
-    var updateTimes: String = DateUtils.getCurrentDataDefault()              // 更新时间
+    var updateTimes: Long = System.currentTimeMillis()                     // 更新时间
+
+//    @ColumnInfo(name = "createTime")
+//    var createTime = createTimes
+//
+//    @ColumnInfo(name = "updateTime")
+//    var updateTime = updateTimes
 
     @ColumnInfo(name = "delFlag", defaultValue = "0")
     var delFlag: Int = 0                                                     // 删除标记默认为0

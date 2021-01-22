@@ -1,0 +1,36 @@
+<resources>
+
+    <style name="ThemeOverlay.PrimaryPalette.Light" parent="AppTheme">
+        <item name="backPicture">@drawable/icon_back_black</item>
+    </style>
+
+    <style name="ThemeOverlay.PrimaryPalette.Dark" parent="AppTheme">
+        <item name="backPicture">@drawable/icon_back_white</item>
+    </style>
+
+    <!--    画面移动动画-->
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:activityOpenExitAnimation">@anim/animo_no</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+<!--    屏保页内容展示-->
+    <declare-styleable name="AnimLogoViewAttr">
+        <attr name="logoName" format="string" />
+        <attr name="autoPlay" format="boolean" />
+        <attr name="offsetAnimDuration" format="integer" />
+        <attr name="gradientAnimDuration" format="integer" />
+        <attr name="gradientColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textColors" format="color" />
+        <attr name="verticalOffset" format="dimension" />
+        <attr name="textPadding" format="dimension" />
+        <attr name="showGradient" format="boolean" />
+    </declare-styleable>
+</resources>

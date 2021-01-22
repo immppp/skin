@@ -4,6 +4,4 @@
     <attr name="backPicture" format="reference" />
     <attr name="textColor" format="color" />
     <attr name="textSecondColor" format="color"/>
-
-
 </resources>

@@ -1,11 +1,10 @@
 package cn.imppp.skin.entity.dao
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Ignore
-import androidx.room.PrimaryKey
+import androidx.room.*
 import cn.imppp.skin.base.BaseDaoEntity
 import cn.imppp.skin.utils.DateUtils
+import cn.imppp.skin.utils.convert.DateConverter
+import cn.imppp.skin.utils.convert.ListConverter
 import java.util.*
 
 //// 主键,自增形式的
@@ -31,11 +30,15 @@ import java.util.*
 //@ColumnInfo(name = "createTime")
 //var createTime: Date = Date()
 @Entity
+@TypeConverters(ListConverter::class)
 data class User(
     @ColumnInfo(name = "firstName", defaultValue = "")
     var firstName: String,                              // 姓名
     @ColumnInfo(name = "fatherName", defaultValue = "fatherName")
     var fatherName: String,                             // 父亲姓名
     @ColumnInfo(name = "age", defaultValue = "5")
-    var age: Int                                        // 年龄大小
+    var age: Int,                                        // 年龄大小
+    @ColumnInfo(name = "motherName")
+    var motherName: String = "motherName",
+    var list: List<String>                               // 数据列表
 ) : BaseDaoEntity()

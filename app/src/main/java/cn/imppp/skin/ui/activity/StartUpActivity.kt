@@ -1,5 +1,7 @@
 package cn.imppp.skin.ui.activity
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -13,6 +15,8 @@ import cn.imppp.skin.ui.activity.login.LoginActivity
 import cn.imppp.skin.utils.MmkvUtils
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import kotlinx.android.synthetic.main.activity_start_up.*
+
 
 class StartUpActivity: AppCompatActivity() {
 
@@ -21,12 +25,18 @@ class StartUpActivity: AppCompatActivity() {
         QMUIStatusBarHelper.translucent(this, Color.TRANSPARENT)
         QMUIDisplayHelper.setFullScreen(this)
         setContentView(R.layout.activity_start_up)
-        if (!TextUtils.isEmpty(MmkvUtils.decodeString(Constant.spCookie))) {
-            startActivity(Intent(App.mWindowsContext, CardViewActivity::class.java))
-        } else {
-            startActivity(Intent(App.mWindowsContext, CardViewActivity::class.java))
-        }
-        finish()
+
+        alvStartUp.addGradientAnimListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                if (!TextUtils.isEmpty(MmkvUtils.decodeString(Constant.spCookie))) {
+                    startActivity(Intent(App.mWindowsContext, LoginActivity::class.java))
+                } else {
+                    startActivity(Intent(App.mWindowsContext, LoginActivity::class.java))
+                }
+                finish()
+            }
+        })
+        alvStartUp.startAnimation()
     }
 
 }

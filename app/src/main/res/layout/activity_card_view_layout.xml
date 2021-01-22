@@ -31,9 +31,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:padding="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/tvCardViewClick"
@@ -42,17 +42,17 @@
                     android:layout_gravity="center"
                     android:text="新增数据"
                     android:textColor="@color/color_white"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvCarViewUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="更新数据"
                     android:layout_marginTop="20dp"
+                    android:text="更新数据"
                     android:textColor="@color/color_white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +63,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="删除数据"
                     android:layout_marginTop="20dp"
+                    android:text="删除数据"
                     android:textColor="@color/color_white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -80,9 +80,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/color_white"
             android:padding="5dp"
+            android:textColor="@color/color_white"
             android:textSize="@dimen/primary_size"
             app:layout_constraintTop_toBottomOf="@id/ccdClick" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvCardViewDes" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

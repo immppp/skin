@@ -12,7 +12,7 @@ import cn.imppp.skin.entity.dao.User
 interface UserDao : BaseDao<User> {
 
     // 查询所有数据
-    @Query("select * from user order by updateTimes desc ")
+    @Query("select * from user order by seqNum asc ")
     fun getAllData(): List<User>
 
     // 根据条件查询数据
